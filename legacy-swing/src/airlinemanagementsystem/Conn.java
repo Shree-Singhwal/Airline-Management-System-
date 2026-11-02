@@ -11,13 +11,13 @@ public class Conn {
     public Connection c;
     public Statement s;
 
-    // Database configurations (Change these if your MySQL settings are different)
+    // Database configurations
     private static final String DB_URL = System.getProperty("db.url", 
         System.getenv().getOrDefault("DB_URL", "jdbc:mysql://localhost:3306/airlinemanagementsystem?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC"));
     private static final String DB_USER = System.getProperty("db.user", 
         System.getenv().getOrDefault("DB_USER", "root"));
     private static final String DB_PASS = System.getProperty("db.password", 
-        System.getenv().getOrDefault("DB_PASSWORD", "root")); // Set your MySQL password here
+        System.getenv().getOrDefault("DB_PASSWORD", "NewPassword@123")); // Set your MySQL password here
 
     public Conn() {
         try {

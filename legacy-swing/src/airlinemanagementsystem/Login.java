@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 public class Login extends JFrame implements ActionListener {
     private JTextField tfUsername;
     private JPasswordField tfPassword;
-    private JButton btnSubmit, btnReset, btnClose;
+    private JButton btnSubmit, btnReset, btnClose, btnRegister;
 
     public Login() {
         setTitle("Airline Management System - Login");
@@ -33,36 +33,36 @@ public class Login extends JFrame implements ActionListener {
         // Card Panel
         JPanel card = new JPanel();
         card.setLayout(null);
-        card.setBounds(60, 90, 480, 200);
+        card.setBounds(60, 90, 480, 250);
         card.setBackground(Color.WHITE);
         card.setBorder(BorderFactory.createLineBorder(new Color(220, 224, 230), 1));
         add(card);
 
         // Username
         JLabel lblUsername = new JLabel("Username:");
-        lblUsername.setBounds(40, 35, 100, 25);
+        lblUsername.setBounds(40, 30, 100, 25);
         lblUsername.setFont(new Font("Segoe UI", Font.BOLD, 14));
         card.add(lblUsername);
 
         tfUsername = new JTextField();
-        tfUsername.setBounds(150, 35, 280, 30);
+        tfUsername.setBounds(150, 30, 280, 30);
         tfUsername.setFont(new Font("Segoe UI", Font.PLAIN, 14));
         card.add(tfUsername);
 
         // Password
         JLabel lblPassword = new JLabel("Password:");
-        lblPassword.setBounds(40, 85, 100, 25);
+        lblPassword.setBounds(40, 75, 100, 25);
         lblPassword.setFont(new Font("Segoe UI", Font.BOLD, 14));
         card.add(lblPassword);
 
         tfPassword = new JPasswordField();
-        tfPassword.setBounds(150, 85, 280, 30);
+        tfPassword.setBounds(150, 75, 280, 30);
         tfPassword.setFont(new Font("Segoe UI", Font.PLAIN, 14));
         card.add(tfPassword);
 
-        // Buttons
+        // Buttons Row 1: Login, Reset, Close
         btnSubmit = new JButton("Login");
-        btnSubmit.setBounds(150, 140, 85, 32);
+        btnSubmit.setBounds(150, 125, 85, 32);
         btnSubmit.setBackground(new Color(24, 76, 120));
         btnSubmit.setForeground(Color.WHITE);
         btnSubmit.setFont(new Font("Segoe UI", Font.BOLD, 13));
@@ -71,7 +71,7 @@ public class Login extends JFrame implements ActionListener {
         card.add(btnSubmit);
 
         btnReset = new JButton("Reset");
-        btnReset.setBounds(245, 140, 85, 32);
+        btnReset.setBounds(245, 125, 85, 32);
         btnReset.setBackground(new Color(108, 117, 125));
         btnReset.setForeground(Color.WHITE);
         btnReset.setFont(new Font("Segoe UI", Font.BOLD, 13));
@@ -80,7 +80,7 @@ public class Login extends JFrame implements ActionListener {
         card.add(btnReset);
 
         btnClose = new JButton("Close");
-        btnClose.setBounds(340, 140, 90, 32);
+        btnClose.setBounds(340, 125, 90, 32);
         btnClose.setBackground(new Color(220, 53, 69));
         btnClose.setForeground(Color.WHITE);
         btnClose.setFont(new Font("Segoe UI", Font.BOLD, 13));
@@ -88,10 +88,25 @@ public class Login extends JFrame implements ActionListener {
         btnClose.addActionListener(this);
         card.add(btnClose);
 
+        // Buttons Row 2: First Time User Registration Button
+        JSeparator sep = new JSeparator();
+        sep.setBounds(40, 175, 400, 10);
+        card.add(sep);
+
+        btnRegister = new JButton("✨ First Time User? Register / Sign Up");
+        btnRegister.setBounds(100, 195, 280, 34);
+        btnRegister.setBackground(new Color(40, 167, 69));
+        btnRegister.setForeground(Color.WHITE);
+        btnRegister.setFont(new Font("Segoe UI", Font.BOLD, 13));
+        btnRegister.setFocusPainted(false);
+        btnRegister.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btnRegister.addActionListener(this);
+        card.add(btnRegister);
+
         // Enter key triggers login
         getRootPane().setDefaultButton(btnSubmit);
 
-        setSize(620, 360);
+        setSize(620, 410);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
@@ -128,7 +143,7 @@ public class Login extends JFrame implements ActionListener {
                     dispose();
                     new Home();
                 } else {
-                    JOptionPane.showMessageDialog(this, "Invalid Username or Password!", "Authentication Failed", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Invalid Username or Password!\nClick 'First Time User? Register / Sign Up' to create an account.", "Authentication Failed", JOptionPane.ERROR_MESSAGE);
                 }
                 conn.close();
             } catch (Exception e) {
@@ -141,6 +156,8 @@ public class Login extends JFrame implements ActionListener {
             tfUsername.requestFocus();
         } else if (ae.getSource() == btnClose) {
             System.exit(0);
+        } else if (ae.getSource() == btnRegister) {
+            new Signup();
         }
     }
 
