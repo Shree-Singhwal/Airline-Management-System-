@@ -91,28 +91,3 @@ airline-management-system/
 
 ---
 
-## 🚀 Step 3: How to Publish / Push to GitHub
-
-1. Open the integrated terminal in VS Code (`Ctrl + ~`) in the project root:
-   ```bash
-   # Initialize Git
-   git init
-
-   # Stage all files
-   git add .
-
-   # Commit changes
-   git commit -m "Initial commit: Airline Management System with Swing and JDBC"
-   ```
-
-2. Create a new repository on [GitHub](https://github.com/new):
-   - Repository Name: `airline-management-system`
-   - Leave it **Public** (or **Private** as desired).
-   - **Do NOT** check "Add a README" (we already created one).
-
-3. Link the remote and push:
-   ```bash
-   git branch -M main
-   git remote add origin https://github.com/<your-username>/airline-management-system.git
-   git push -u origin main
-   ```
