@@ -1,0 +1,19 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch Login (Airline System)",
+            "request": "launch",
+            "mainClass": "airlinemanagementsystem.Login",
+            "projectName": "airline-management-system"
+        },
+        {
+            "type": "java",
+            "name": "Launch Home Dashboard Directly",
+            "request": "launch",
+            "mainClass": "airlinemanagementsystem.Home",
+            "projectName": "airline-management-system"
+        }
+    ]
+}
